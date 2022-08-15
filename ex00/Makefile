@@ -1,0 +1,1 @@
+g++ -Wall -Wextra -Werror -Wno-unused-variable -Wno-unused-parameter -std=c++98 test.cpp
