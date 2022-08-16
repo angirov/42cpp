@@ -6,7 +6,7 @@
 /*   By: vangirov <vangirov@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 12:32:28 by vangirov          #+#    #+#             */
-/*   Updated: 2022/08/15 22:09:57 by vangirov         ###   ########.fr       */
+/*   Updated: 2022/08/16 19:35:10 by vangirov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,21 +29,21 @@
 class Contact {
 public:
 	Contact();
-	Contact(std::string firstName,
-			std::string lastName,
-			std::string nickName,
-			std::string phoneNumber,
-			std::string darkestSecret);
 	~Contact();
 
-	static int	getCounter();
-	static int	getOldest();
+	void	setContact(std::string firstName,
+						std::string lastName,
+						std::string nickName,
+						std::string phoneNumber,
+						std::string darkestSecret);
+	static int	getAddCounter();
+	static int	filled();
 
 	std::string	getFirstName();
 	std::string	getLastName();
 	std::string	getNickName();
 	std::string	getPhoneNumber();
-	std::string	getDarkestSecret();
+
 private:
 	std::string	firstName;
 	std::string	lastName;
@@ -51,8 +51,7 @@ private:
 	std::string	phoneNumber;
 	std::string	darkestSecret;
 
-	static int	oldest;
-	static int	counter;
+	static int	addCounter;
 };
 
 #endif

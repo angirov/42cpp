@@ -6,7 +6,7 @@
 /*   By: vangirov <vangirov@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 12:30:53 by vangirov          #+#    #+#             */
-/*   Updated: 2022/08/15 22:10:24 by vangirov         ###   ########.fr       */
+/*   Updated: 2022/08/16 19:30:42 by vangirov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,14 @@ class PhoneBook
 {
 public:
 	PhoneBook();
-	// PhoneBook(int contact_num);
 	~PhoneBook();
+
 	/*
 	If the user enters this command, they are prompted to input the information
 	of the new contact one field at a time. 
 	Once all the fields have been completed, add the contact to the phonebook. */
-	static void	addContact();
+	void	addContact();
+
 	/* Display the saved contacts as a list of 4 columns: index, first name, last
 	name and nickname.
 	Each column must be 10 characters wide. A pipe character (’|’) separates
@@ -46,11 +47,15 @@ public:
 	Then, prompt the user again for the index of the entry to display. If the index
 	is out of range or wrong, define a relevant behavior. Otherwise, display the
 	contact information, one field per line. */
-	void	displayAll();
+	int		displayAll();
+
+	void	search();
 
 private:
 	// int		contact_num = 8;
 	Contact	contacts[CONTACT_NUM];
+	static std::string	trancate(std::string str, int width, std::string elipse);
+	static void	printCell(std::string str, bool sep_b);
 	static void	printContact(Contact& contact, int idx);
 };
 

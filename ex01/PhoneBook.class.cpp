@@ -6,27 +6,15 @@
 /*   By: vangirov <vangirov@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 11:59:05 by vangirov          #+#    #+#             */
-/*   Updated: 2022/08/15 21:57:00 by vangirov         ###   ########.fr       */
+/*   Updated: 2022/08/16 19:32:33 by vangirov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iomanip>
 #include "PhoneBook.class.hpp"
 #include "Contact.class.hpp"
 
-// enum col {
-// 	index, 
-// 	first_name, 
-// 	last,
-// 	name,
-// 	nickname
-// };
-
-// static std::string headers[] = { "index", "first name", "last name", "nickname" };
-
-PhoneBook::PhoneBook()
-{
-	std::cout << "create PB" << std::endl;
-}
+PhoneBook::PhoneBook() {}
 
 /* Display the saved contacts as a list of 4 columns: index, first name, last
 		name and nickname.
@@ -38,26 +26,86 @@ PhoneBook::PhoneBook()
 		is out of range or wrong, define a relevant behavior. Otherwise, display the
 		contact information, one field per line. */
 
-void	PhoneBook::displayAll()
-{
-	for (int i; i < CONTACT_NUM; i++)
+void	PhoneBook::search() {
+	if (!PhoneBook::displayAll())
+		return;
+	std::cout << "Insert index of the contact to display: " << std::endl;
+	int index = -1;
+	while(!(std::cin >> index && 
+			index >= 0 && index < Contact::filled()))
 	{
-		PhoneBook::printContact(this->contacts[i], i);
+		std::cout << "Bad value!\n";
+		std::cin.clear();
+		std::cin.ignore(1000, '\n');
 	}
+	std::cout << ">> Phone Number: " << this->contacts[index].getPhoneNumber() << std::endl;
+}
+
+int	PhoneBook::displayAll()
+{
+	int filled = Contact::filled();
+
+	if (!filled)
+		std::cout << ">> The PhoneBook is empty!" << std::endl;
+	else
+	{
+		for (int i = 0; i < filled; i++)
+		{
+			PhoneBook::printContact(this->contacts[i], i);
+		}
+	}
+	return filled;
+}
+
+std::string	PhoneBook::trancate(std::string str, int width, std::string elipse)
+{
+	if (str.length() > width)
+		return (str.substr(0, width - elipse.length()) + elipse);
+	return str;
+}
+
+void	PhoneBook::printCell(std::string str, bool sep_b)
+{
+	str = trancate(str, COL_WIDTH, ".");
+	std::string col_sep(1, COL_SEP);
+	std::cout << std::setw(10) << std::right << str;
+	if (sep_b)
+		std::cout << col_sep;
+	else
+		std::cout << std::endl;
 }
 
 void	PhoneBook::printContact(Contact& contact, int idx)
 {
-	std::string sep(1, COL_SEP);
-
-	std::cout << idx
-	<< sep << contact.getFirstName()
-	<< sep << contact.getLastName()
-	<< sep << contact.getNickName()
-	<< std::endl;
+	PhoneBook::printCell(std::to_string(idx), true);
+	PhoneBook::printCell(contact.getFirstName(), true);
+	PhoneBook::printCell(contact.getLastName(), true);
+	PhoneBook::printCell(contact.getNickName(), false);
 }
 
-PhoneBook::~PhoneBook()
+void	PhoneBook::addContact()
 {
-	std::cout << "destroy PB" << std::endl;
+	std::string fieldNames[] = {"First Name",
+								"Last Name",
+								"Nickname",
+								"Phone Number",
+								"Darkest Secret"};
+	int len = sizeof(fieldNames) / sizeof(std::string);
+	std::string	toFill[len];
+	int toAdd = Contact::getAddCounter() % CONTACT_NUM;
+	Contact& contact = this->contacts[toAdd];
+	for (int i = 0; i < len; i++)
+	{
+		std::cout << ">> Please enter the " << fieldNames[i] << ": " << std::endl;
+		std::cin >> toFill[i];
+		std::cin.ignore();
+	}
+	contact.setContact(toFill[0],
+						toFill[1],
+						toFill[2],
+						toFill[3],
+						toFill[4]);
+	return;
 }
+
+PhoneBook::~PhoneBook() {}

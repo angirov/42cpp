@@ -6,14 +6,13 @@
 /*   By: vangirov <vangirov@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 16:37:08 by vangirov          #+#    #+#             */
-/*   Updated: 2022/08/15 22:08:45 by vangirov         ###   ########.fr       */
+/*   Updated: 2022/08/16 19:34:28 by vangirov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mapb.hpp"
 
-int	Contact::oldest = 0;
-int	Contact::counter = 0;
+int	Contact::addCounter = 0;
 
 Contact::Contact() :
 				firstName("default"),
@@ -22,36 +21,37 @@ Contact::Contact() :
 				phoneNumber("default"),
 				darkestSecret("default")
 {
-	Contact::counter++;
-	std::cout << "Created contact [" << Contact::counter << "]" << std::endl;
 }
 
-Contact::Contact(std::string firstName,
-				std::string lastName,
-				std::string nickName,
-				std::string phoneNumber,
-				std::string darkestSecret) :
-				firstName(firstName),
-				lastName(lastName),
-				nickName(nickName),
-				phoneNumber(phoneNumber),
-				darkestSecret(darkestSecret)
+void	Contact::setContact(std::string firstName,
+							std::string lastName,
+							std::string nickName,
+							std::string phoneNumber,
+							std::string darkestSecret)
 {
-	std::cout << "Created contact [" << Contact::counter << "]" << std::endl;
+	this->firstName = firstName;
+	this->lastName = lastName;
+	this->nickName = nickName;
+	this->phoneNumber = phoneNumber;
+	this->darkestSecret = darkestSecret;
+	Contact::addCounter++;
 }
 
 Contact::~Contact()
 {
 }
 
-int	Contact::getCounter()
+int	Contact::filled()
 {
-	return Contact::counter;
+	if (Contact::addCounter < 8)
+		return Contact::addCounter;
+	else
+		return 8;
 }
 
-int	Contact::getOldest()
+int	Contact::getAddCounter()
 {
-	return Contact::oldest;
+	return Contact::addCounter;
 }
 
 std::string	Contact::getFirstName()
@@ -72,9 +72,4 @@ std::string	Contact::getNickName()
 std::string	Contact::getPhoneNumber()
 {
 	return this->phoneNumber;
-}
-
-std::string	Contact::getDarkestSecret()
-{
-	return this->darkestSecret;
 }
