@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.class.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vangirov <vangirov@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: vangirov <vangirov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 11:59:05 by vangirov          #+#    #+#             */
-/*   Updated: 2022/08/16 19:32:33 by vangirov         ###   ########.fr       */
+/*   Updated: 2022/10/05 11:50:53 by vangirov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,11 @@ int	PhoneBook::displayAll()
 			PhoneBook::printContact(this->contacts[i], i);
 		}
 	}
+	std::cout << ">>>>> Contacts added: " << Contact::getAddCounter() << " >>>>>" << std::endl; 
 	return filled;
 }
 
-std::string	PhoneBook::trancate(std::string str, int width, std::string elipse)
+std::string	PhoneBook::trancate(std::string str, std::string::size_type width, std::string elipse)
 {
 	if (str.length() > width)
 		return (str.substr(0, width - elipse.length()) + elipse);
@@ -90,11 +91,10 @@ void	PhoneBook::addContact()
 								"Nickname",
 								"Phone Number",
 								"Darkest Secret"};
-	int len = sizeof(fieldNames) / sizeof(std::string);
-	std::string	toFill[len];
+	std::string	toFill[5];
 	int toAdd = Contact::getAddCounter() % CONTACT_NUM;
 	Contact& contact = this->contacts[toAdd];
-	for (int i = 0; i < len; i++)
+	for (int i = 0; i < 5; i++)
 	{
 		std::cout << ">> Please enter the " << fieldNames[i] << ": " << std::endl;
 		std::cin >> toFill[i];

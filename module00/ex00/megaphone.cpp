@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.cpp                                           :+:      :+:    :+:   */
+/*   megaphone.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vangirov <vangirov@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: vangirov <vangirov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 11:49:57 by vangirov          #+#    #+#             */
-/*   Updated: 2022/08/05 12:12:23 by vangirov         ###   ########.fr       */
+/*   Updated: 2022/10/05 10:54:38 by vangirov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int main(int argc, char **argv)
 {
-	char	buff[1000];
-
 	for (int i = 1; argv[i]; i++)
 		for (int j = 0; argv[i][j]; j++)
 			std::cout << (char)toupper(argv[i][j]);

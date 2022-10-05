@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.class.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vangirov <vangirov@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: vangirov <vangirov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 12:30:53 by vangirov          #+#    #+#             */
-/*   Updated: 2022/08/16 19:30:42 by vangirov         ###   ########.fr       */
+/*   Updated: 2022/10/05 11:08:43 by vangirov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ public:
 private:
 	// int		contact_num = 8;
 	Contact	contacts[CONTACT_NUM];
-	static std::string	trancate(std::string str, int width, std::string elipse);
+	static std::string	trancate(std::string str, std::string::size_type width, std::string elipse);
 	static void	printCell(std::string str, bool sep_b);
 	static void	printContact(Contact& contact, int idx);
 };

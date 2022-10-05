@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.class.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vangirov <vangirov@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: vangirov <vangirov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 16:37:08 by vangirov          #+#    #+#             */
-/*   Updated: 2022/08/16 19:34:28 by vangirov         ###   ########.fr       */
+/*   Updated: 2022/10/05 11:02:46 by vangirov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
