@@ -9,9 +9,9 @@ int	main()
 
 	Zombie *horde = zombieHorde(N, "Noname");
 	std::vector<Zombie> zv = *(std::vector<Zombie> *)horde;
-	for (Zombie& z : zv)
+	for (int i=0; i < N; ++i)
 	{
-		z.announce();
+		zv[i].announce();
 	}
 
 	delete (std::vector<Zombie> *)horde;
