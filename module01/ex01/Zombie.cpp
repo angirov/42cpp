@@ -1,8 +1,8 @@
 #include "Zombie.hpp"
 
-Zombie::Zombie() : name( "noname" ) 
+Zombie::Zombie()
 {
-	std::cout << "Zombie " << this->name << " is constructed" << std::endl;
+	std::cout << "Zombie NONAME is constructed" << std::endl;
 }
 Zombie::Zombie( std::string name ) : name( name ) 
 {
@@ -12,6 +12,11 @@ Zombie::Zombie( std::string name ) : name( name )
 Zombie::~Zombie()
 {
 	std::cout << "Zombie " << this->name << " is destructed" << std::endl;
+}
+
+void	Zombie::setName( std::string name )
+{
+	this->name = name;
 }
 
 void	Zombie::announce( void )
