@@ -1,4 +1,8 @@
+#include "HumanA.hpp"
+#include "HumanB.hpp"
+#include "Weapon.hpp"
 
+#include <iostream>
 
 int main()
 {
@@ -7,6 +11,7 @@ int main()
 		HumanA bob("Bob", club);
 		bob.attack();
 		club.setType("some other type of club");
+		// std::cout << "Type " << club.getType().length() << std::endl;
 		bob.attack();
 	}
 	{
@@ -16,6 +21,8 @@ int main()
 		jim.attack();
 		club.setType("some other type of club");
 		jim.attack();
+		HumanB ruslan("Ruslan");
+		ruslan.attack();
 	}
 return 0;
 }
