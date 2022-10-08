@@ -1,14 +1,10 @@
 #include <string>
 #include <iostream>
+#include <fstream>
 
-int main()
+std::string replace(std::string base, std::string str1, std::string str2)
 {
-    std::string base = "123aaa-----aaa===aaa====";
-    std::string str1 = "aaa";
-    std::string str2 = "bbb";
     std::string ret = "";
-
-    // std::cout << base.substr(1) << std::endl;
 
     std::size_t start = 0;
     std::size_t found = base.find(str1);
@@ -17,9 +13,39 @@ int main()
         ret += base.substr(start, found-start) + str2;
         start = found + str1.length();
         if (start >= base.length())
-            std::cout << ret << std::endl; // return
+            return ret;
         found = base.find(str1, start);
     }
     ret += base.substr(start);
-    std::cout << ret << std::endl; // return
+    return ret;
+}
+
+
+int main(int argc, char **argv)
+{
+    std::string ifname(argv[1]);
+    std::ifstream infile(ifname.c_str());
+
+    if (argc < 4)
+    {
+        std::cerr << "Error: wrong format "<< std::endl;
+        return 1;
+    }
+    if (!infile)
+    {
+        std::cerr << "Error: cannot open " << ifname << std::endl;
+        return 2;
+    }
+
+    std::string ofname = ifname + ".replace";
+    std::ofstream outfile(ofname.c_str());
+
+    std::string str1(argv[2]);
+    std::string str2(argv[3]);
+
+    std::string buff;
+    while(getline(infile, buff))
+        outfile << replace(buff, str1, str2) << std::endl;
+
+    return 0;
 }
