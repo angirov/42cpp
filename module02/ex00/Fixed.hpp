@@ -1,6 +1,9 @@
 #ifndef FIXED_HPP
 # define FIXED_HPP
 
+# include <string>
+# include <iostream>
+
 class Fixed {
 private:
     // A static constant integer to store the number of fractional bits. Its value will always be the integer literal 8.
@@ -20,7 +23,6 @@ public:
     int getRawBits( void ) const;
     // A member function that sets the raw value of the fixed-point number.
     void setRawBits( int const raw );
-that sets the raw value of the fixed-point number.
-}
+};
 
 #endif
