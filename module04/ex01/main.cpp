@@ -2,6 +2,8 @@
 #include "Cat.class.hpp"
 #include "Dog.class.hpp"
 
+#define ARR_LEN 10
+
 int main()
 {
 	const Animal* meta = new Animal();
@@ -29,5 +31,23 @@ int main()
 	delete d;
 	delete c;
 	delete meta;
+
+	std::cout << "===== Array experiment starts =====" << std::endl;
+	Animal * array[ARR_LEN];
+	for (int i = 0; i < ARR_LEN; i++)
+	{
+		if (i % 2 == 0)
+			array[i] = new Dog();
+		else
+			array[i] = new Cat();
+	}
+	for (int i = 0; i < ARR_LEN; i++)
+	{
+		std::cout << "[" << i << "] Type: " << array[i]->getType() << std::endl;
+	}
+	for (int i = 0; i < ARR_LEN; i++)
+	{
+		delete array[i];
+	}
 	return 0;
 }

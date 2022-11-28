@@ -3,7 +3,6 @@
 Dog::Dog( void ) { //: type("Dog") {
 	std::cout << "Dog default constructor is called" << std::endl;
 	type = "Dog";
-	std::cout << "Dog type: " << type << std::endl;
 };
 
 Dog::Dog(Dog const & orig) : Animal(), type(orig.type) {
