@@ -13,11 +13,6 @@ Dog::~Dog( void ) {
 		std::cout << "Dog destructor is called" << std::endl;
 };
 
-Dog & Dog::operator=(Dog const & rhs) {
-	type = rhs.type;
-	return(*this);
-};
-
 std::string Dog::getType() const {
 	return (type);
 };

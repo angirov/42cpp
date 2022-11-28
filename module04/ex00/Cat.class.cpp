@@ -12,11 +12,6 @@ Cat::~Cat( void ) {
 		std::cout << "Cat destructor is called" << std::endl;
 };
 
-Cat & Cat::operator=(Cat const & rhs) {
-	type = rhs.type;
-	return(*this);
-};
-
 std::string Cat::getType() const {
 	return (type);
 };
