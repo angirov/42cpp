@@ -17,6 +17,10 @@ Cat & Cat::operator=(Cat const & rhs) {
 	return(*this);
 };
 
+std::string Cat::getType() const {
+	return (type);
+};
+
 void Cat::makeSound() const {
 	std::cout << "Myau Myau\n" << std::endl;
 };

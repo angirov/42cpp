@@ -17,6 +17,10 @@ WrongCat & WrongCat::operator=(WrongCat const & rhs) {
 	return(*this);
 };
 
+std::string WrongCat::getType() const {
+	return (type);
+};
+
 void WrongCat::makeSound() const {
 	std::cout << "Wrong Myau Myau\n" << std::endl;
 };

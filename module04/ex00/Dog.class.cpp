@@ -18,6 +18,10 @@ Dog & Dog::operator=(Dog const & rhs) {
 	return(*this);
 };
 
+std::string Dog::getType() const {
+	return (type);
+};
+
 void Dog::makeSound() const {
 	std::cout << "Gav gav\n" << std::endl;
 };
