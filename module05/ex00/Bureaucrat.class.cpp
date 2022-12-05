@@ -1,7 +1,7 @@
 #include "Bureaucrat.class.hpp"
 
 Bureaucrat::Bureaucrat(std::string inname, int ingrade) : name(inname){
-	std::cout << ">>> Bureaucrat default constructor is called" << std::endl;
+	std::cout << ">>> Bureaucrat constructor is called" << std::endl;
 	try {
 		setGrade(ingrade);
 	} catch(std::exception& e) {

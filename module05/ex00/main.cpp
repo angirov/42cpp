@@ -22,4 +22,4 @@ int main()
 // Open questions for both Bu and Fo
 // << overloading
 // copying of names
-// 
+// check input initializing const variables of a class
