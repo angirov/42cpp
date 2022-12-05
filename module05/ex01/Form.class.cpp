@@ -1,5 +1,5 @@
 #include "Form.class.hpp"
-
+#include "Bureaucrat.class.hpp"
 // class Form {
 // private:
 // 	// A constant name.
@@ -11,43 +11,74 @@
 // 	// And a constant grade required to execute i
 // 	int const gradeExec;
 
-Form::Form(std::string name, int gradeSign, int gradeExec) : issigned(false) {
-	std::cout << "Form constructor is called" << std::endl;
+Form::Form(std::string inname, int ingradeSign, int ingradeExec) : 
+	name(inname),
+	gradeSign(isGrade(ingradeSign)),
+	gradeExec(isGrade(ingradeExec)) {
+	std::cout << "Form constructor is called." << std::endl;
+};
+
+Form::Form(Form const & other) : 
+	name(other.name),
+	gradeSign(other.gradeSign),
+	gradeExec(other.gradeExec),
+	issigned(other.issigned) {
+	std::cout << ">>> Form copy constructor is called" << std::endl;
+};
+
+Form::~Form(void) {
+	std::cout << ">>> Form destructor is called" << std::endl;
+};
+
+Form & Form::operator=(Form const & other) {
+	std::cout << ">>> Form copy operator is called (sign status is copied, name and grades stay the same)." << std::endl;
+	issigned = other.issigned;
+	return (*this);
+};
+
+std::string Form::getName() const {
+	return name;
 }
 
-Form::Form(Form const &) {
-	
+bool Form::getIssigned() const {
+	return issigned;
 }
 
-Form::~Form() {
-	
+int Form::getGradeSign() const {
+	return gradeSign;
 }
 
-std::ostream & Form::operator<<(std::ostream &) {
-	
+int Form::getGradeExec() const {
+	return gradeExec;
 }
 
-Form & Form::operator=(Form const &) {
-	
+int Form::isGrade(int ingrade) const {
+	if (ingrade < 1)
+	{
+		std::cerr << "### Greade " << ingrade << " is too high. Set to maximum (1)" << std::endl;
+		return 1;
+	}
+	if (ingrade > 150)
+	{
+		std::cerr << "### Greade " << ingrade << " is too low. Set to minimum (150)" << std::endl;
+		return 150;
+	}
+	return ingrade;
 }
 
-std::string Form::getName() {
-	
+bool Form::beSigned(Bureaucrat const & b) {
+	if (b.getGrade() <= gradeSign)
+		return (issigned = true);
+	else
+		throw Form::GradeTooLowException();
 }
 
-bool Form::getIssigned() {
-	
+std::ostream & operator<<(std::ostream & o, Form const & form)
+{
+	std::string ifsigned = (form.getIssigned() == true)? "signed" : "not signed";
+	o << "Form " << form.getName() 
+		<< " (" << ifsigned
+		<< ", grade to sign: " << form.getGradeSign()
+		<< ", to execute: " << form.getGradeExec();
+	return o;
 }
-
-int Form::getGradeSign() {
-	
-}
-
-int Form::getGradeExec() {
-	
-}
-
-bool Form::beSigned(Bureaucrat const &) {
-	
-}
-

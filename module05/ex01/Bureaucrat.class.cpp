@@ -1,7 +1,8 @@
 #include "Bureaucrat.class.hpp"
+#include "Form.class.hpp"
 
 Bureaucrat::Bureaucrat(std::string inname, int ingrade) : name(inname){
-	std::cout << ">>> Bureaucrat default constructor is called" << std::endl;
+	std::cout << ">>> Bureaucrat constructor is called" << std::endl;
 	try {
 		setGrade(ingrade);
 	} catch(std::exception& e) {
@@ -61,7 +62,20 @@ void Bureaucrat::decrementGrade() {
 	}
 };
 
+void Bureaucrat::signForm(Form & f)
+{
+	try {
+		if (f.beSigned(*this))
+			std::cout << *this << " signed " << f << std::endl;
+	}
+	catch (std::exception & e)
+	{
+		std::cout << *this << " couldn’t sign " << f 
+		<< " because " << e.what() << std::endl;
+	}
+}
+
 std::ostream& operator<<(std::ostream& os, Bureaucrat & b) {
-	os << b.getName() << ", bureaucrat grade " << b.getGrade();
+	os << b.getName() << ", grade " << b.getGrade();
 	return os;
 };

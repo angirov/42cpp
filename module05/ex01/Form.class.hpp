@@ -6,16 +6,18 @@
 # include <sstream>
 # include "Bureaucrat.class.hpp"
 
+class Bureaucrat;
+
 class Form {
 private:
 	// A constant name.
 	std::string const name;
-	// A boolean indicating whether it is signed (at construction, it’s not).
-	bool issigned;
 	// A constant grade required to sign it.
 	int const gradeSign;
 	// And a constant grade required to execute i
 	int const gradeExec;
+	// A boolean indicating whether it is signed (at construction, it’s not).
+	bool issigned;
 
 public:
 	Form(std::string name, int gradeSign, int gradeExec);
@@ -23,12 +25,29 @@ public:
 	~Form();
 	Form & operator=(Form const &);
 
-	std::string getName();
-	bool getIssigned();
-	int getGradeSign();
-	int getGradeExec();
+	std::string getName() const;
+	bool getIssigned() const;
+	int getGradeSign() const;
+	int getGradeExec() const;
+	int isGrade(int ingrade) const;
 
-	bool beSigned(Bureaucrat const &);
+	bool beSigned(Bureaucrat const & b);
+
+	class GradeTooHighException : public std::exception {
+	public:
+		virtual const char* what() const throw() {
+			return ("Grade is too high.");
+		}
+	};
+
+	class GradeTooLowException : public std::exception {
+	public:
+		virtual const char* what() const throw() {
+			return ("Grade is too low.");
+		}
+	};
 };
+
+std::ostream & operator<<(std::ostream & o, Form const & form);
 
 #endif

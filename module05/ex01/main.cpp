@@ -1,15 +1,16 @@
 #include "Bureaucrat.class.hpp"
+#include "Form.class.hpp"
 
 int main()
 {
 	Bureaucrat * e = new Bureaucrat("Emmanuel", 150);
 
-	std::cout << *e <<  std::endl; 
-
-	e->decrementGrade();
-	e->incrementGrade();
+	Form * f = new Form("D4", 10, 20);
+	std::cout << *f << " exits now!" << std::endl;
+	e->signForm(*f);
 
 	delete e;
+	delete f;
 	return 0;
 }
 
