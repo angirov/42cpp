@@ -1,15 +1,4 @@
 #include "Form.class.hpp"
-#include "Bureaucrat.class.hpp"
-// class Form {
-// private:
-// 	// A constant name.
-// 	std::string const name;
-// 	// A boolean indicating whether it is signed (at construction, it’s not).
-// 	bool issigned;
-// 	// A constant grade required to sign it.
-// 	int const gradeSign;
-// 	// And a constant grade required to execute i
-// 	int const gradeExec;
 
 Form::Form(std::string inname, int ingradeSign, int ingradeExec) : 
 	name(inname),
@@ -79,6 +68,6 @@ std::ostream & operator<<(std::ostream & o, Form const & form)
 	o << "Form " << form.getName() 
 		<< " (" << ifsigned
 		<< ", grade to sign: " << form.getGradeSign()
-		<< ", to execute: " << form.getGradeExec();
+		<< ", to execute: " << form.getGradeExec() << ")";
 	return o;
 }
