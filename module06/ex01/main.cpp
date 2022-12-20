@@ -8,7 +8,7 @@ void printByte(void * ptr)
 
 	for (int i=0; i < 8; i++)
 	{
-		if (*c & ((1 << 8) >> i))
+		if (*c & ((1 << 7) >> i))
 			write(1, "1", 1);
 		else
 			write(1, "0", 1);
