@@ -9,7 +9,7 @@ FLAGS =	-Wall -Werror -Wextra -std=c++98 -pedantic
 
 all: ${NAME}
 
-${NAME}:
+${NAME}: ${SRCS}
 	${CC} ${SRCS} ${FLAGS} -o ${NAME}
 
 fclean:

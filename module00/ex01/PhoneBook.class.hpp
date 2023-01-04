@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.class.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vangirov <vangirov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vangirov <vangirov@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 12:30:53 by vangirov          #+#    #+#             */
-/*   Updated: 2022/10/05 11:08:43 by vangirov         ###   ########.fr       */
+/*   Updated: 2023/01/04 11:44:40 by vangirov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK_CLASS_HPP
 # define PHONEBOOK_CLASS_HPP
 
+#include <stdlib.h>
 # include "mapb.hpp"
 # include "Contact.class.hpp"
 

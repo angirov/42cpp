@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.class.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vangirov <vangirov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vangirov <vangirov@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 11:59:05 by vangirov          #+#    #+#             */
-/*   Updated: 2022/10/05 11:50:53 by vangirov         ###   ########.fr       */
+/*   Updated: 2023/01/04 11:48:34 by vangirov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	PhoneBook::printCell(std::string str, bool sep_b)
 
 void	PhoneBook::printContact(Contact& contact, int idx)
 {
-	PhoneBook::printCell(std::to_string(idx), true);
+	PhoneBook::printCell(int2str(idx), true);
 	PhoneBook::printCell(contact.getFirstName(), true);
 	PhoneBook::printCell(contact.getLastName(), true);
 	PhoneBook::printCell(contact.getNickName(), false);
