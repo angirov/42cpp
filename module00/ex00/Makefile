@@ -6,8 +6,8 @@ FLAGS	= -Wall -Wextra -Werror -std=c++98 -pedantic
 
 all:		${NAME}
 
-${NAME}:
-			${CC} ${SRCS} ${FLAGS} -o ${NAME} 
+${NAME}: ${SRCS}
+	${CC} ${SRCS} ${FLAGS} -o ${NAME} 
 
 leaks:
 	make re
