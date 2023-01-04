@@ -6,7 +6,7 @@
 /*   By: vangirov <vangirov@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 11:49:48 by vangirov          #+#    #+#             */
-/*   Updated: 2023/01/04 11:51:44 by vangirov         ###   ########.fr       */
+/*   Updated: 2023/01/04 13:23:58 by vangirov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,5 @@ int	main()
 		else if (command == "ADD" || command == "a")
 			myPB.addContact();
 	}
-	
+	return (0);
 }
