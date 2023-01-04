@@ -12,7 +12,9 @@ CC = c++
 
 FLAGS = -Wall -Werror -Wextra -std=c++98
 
-all: ${SRCS}
+all: ${NAME}
+
+${NAME}: ${SRCS}
 	${CC} ${FLAGS} ${SRCS} -o ${NAME}
 
 clean:
@@ -32,4 +34,4 @@ valgrind:
 	make re
 	valgrind --leak-check=full ./${NAME} 
 
-.PHONY: re fclean all
+.PHONY: re clean fclean all leaks valgrind

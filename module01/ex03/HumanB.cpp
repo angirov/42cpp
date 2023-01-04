@@ -1,19 +1,15 @@
-
 #include "HumanB.hpp"
 #include "Weapon.hpp"
 
-// HumanB::HumanB()
-// {
-//     this->name = "NONAME";
-//     this->weapon = new Weapon;
-// }
-
 HumanB::HumanB(std::string name) : name(name) 
 {
-    // std::cout << "Constructed HumanB " << this->name << " with " << this->weapon.getType() << std::endl;
+    weapon = NULL;
+    std::cout << ">>> HumanB constructor is called" << std::endl;
 }
 
-HumanB::~HumanB() {}
+HumanB::~HumanB() {
+    std::cout << ">>> HumanB destructor is called" << std::endl;
+}
 
 void	HumanB::setWeapon(Weapon &weapon)
 {
@@ -22,8 +18,8 @@ void	HumanB::setWeapon(Weapon &weapon)
 
 void	HumanB::attack()
 {
-    if (this->weapon->getType().length())
-        std::cout << this->name << " attacks with their " << this->weapon->getType() << std::endl;
+    if (weapon && weapon->getType().length())
+        std::cout << name << " attacks with their " << weapon->getType() << std::endl;
     else
-        std::cout << this->name << " tries to attack but has no weapon" << std::endl;
+        std::cout << name << " tries to attack but has no weapon" << std::endl;
 }

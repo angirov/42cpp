@@ -15,7 +15,7 @@ FLAGS = -Wall -Werror -Wextra -std=c++98
 
 all: ${NAME}
 
-${NAME}:
+${NAME}: ${SRCS}
 	${CC} ${FLAGS} ${SRCS} -o ${NAME}
 
 clean:

@@ -11,7 +11,9 @@ CC = c++
 
 FLAGS = -Wall -Werror -Wextra -std=c++98
 
-all:
+all: ${NAME}
+
+${NAME}: $(SRCS)
 	$(CC) $(FLAGS) $(SRCS) -o $(NAME)
 
 clean:
@@ -20,4 +22,14 @@ clean:
 fclean: clean
 	rm -rf $(NAME)
 
-re: all clean fclean all
+re: fclean all
+
+leaks:
+	make re
+	leaks --fullStacks --atExit -- ./${NAME}
+
+valgrind:
+	make re
+	valgrind --leak-check=full ./${NAME} 
+
+.PHONY: re clean fclean all leaks valgrind

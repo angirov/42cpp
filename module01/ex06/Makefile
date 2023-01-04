@@ -7,7 +7,9 @@ CC = c++
 FLAGS = -Wall -Werror -Wextra -std=c++98
 RM = rm -rf
 
-all:
+all: ${NAME}
+
+${NAME}: ${SRCS}
 	${CC} ${FLAGS} ${SRCS} -o ${NAME}
 
 clean:

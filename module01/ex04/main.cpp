@@ -1,8 +1,9 @@
 #include <string>
+#include <cstring>
 #include <iostream>
 #include <fstream>
 
-std::string replace(std::string base, std::string str1, std::string str2)
+std::string myreplace(std::string base, std::string str1, std::string str2)
 {
     std::string ret = "";
 
@@ -23,17 +24,18 @@ std::string replace(std::string base, std::string str1, std::string str2)
 
 int main(int argc, char **argv)
 {
+    if (argc < 4)
+    {
+        std::cerr << "### Error: wrong format "<< std::endl;
+        return 1;
+    }
+
     std::string ifname(argv[1]);
     std::ifstream infile(ifname.c_str());
 
-    if (argc < 4)
+    if (infile.fail())
     {
-        std::cerr << "Error: wrong format "<< std::endl;
-        return 1;
-    }
-    if (!infile)
-    {
-        std::cerr << "Error: cannot open " << ifname << std::endl;
+        std::cerr << "### Error: " << std::strerror(errno) << std::endl;
         return 2;
     }
 
@@ -45,7 +47,7 @@ int main(int argc, char **argv)
 
     std::string buff;
     while(getline(infile, buff))
-        outfile << replace(buff, str1, str2) << std::endl;
+        outfile << myreplace(buff, str1, str2) << std::endl;
 
     return 0;
 }

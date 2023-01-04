@@ -21,7 +21,11 @@ Harl::~Harl() {
 void Harl::complain( std::string level ) {
     for (int i=0; i < 4; ++i)
         if (level == levels[i])
+        {
+            std::cout << "[ " << level << " ]" << std::endl;
             (this->*funcs[i])();
+            std::cout << std::endl;
+        }
 }
 
 void Harl::debug( void ) {
