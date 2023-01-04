@@ -2,7 +2,7 @@
 
 Zombie::Zombie()
 {
-	std::cout << "Zombie NONAME is constructed" << std::endl;
+	std::cout << "Default Zombie NONAME is constructed" << std::endl;
 }
 Zombie::Zombie( std::string name ) : name( name ) 
 {

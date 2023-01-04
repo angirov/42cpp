@@ -6,7 +6,7 @@ Zombie* zombieHorde( int N, std::string name )
 {
 	Zombie* horde = new Zombie[N];
 	
-	std::cout << "Constructed all zombies" << std::endl;
+	std::cout << ">>> Constructed all zombies" << std::endl;
 	for (int i=0; i < N; i++)
 	{
 		horde[i].setName(name);
