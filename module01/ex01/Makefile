@@ -20,3 +20,16 @@ clean:
 
 fclean: clean
 	${RM} ${NAME}
+
+
+re: fclean all
+
+leaks:
+	make re
+	leaks --fullStacks --atExit -- ./${NAME}
+
+valgrind:
+	make re
+	valgrind --leak-check=full ./${NAME} 
+
+.PHONY: re fclean all
