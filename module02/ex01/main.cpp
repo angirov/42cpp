@@ -10,11 +10,6 @@ int main( void ) {
 
     a = Fixed( 1234.4321f );
 
-    // float x = 0.2912835043975430976509687457645986f;
-    // // std::cout.precision(50);
-    // std::cout << "42.42f = " << x << std::endl;
-    // std::cout << "42.42f = " << (double)x << std::endl;
-
     std::cout << "a is " << a << std::endl;
     std::cout << "b is " << b << std::endl;
     std::cout << "c is " << c << std::endl;
