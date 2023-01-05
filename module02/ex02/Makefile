@@ -12,7 +12,7 @@ all: ${NAME}
 ${NAME}: ${OBJS}
 	${CC} ${OBJS} -o ${NAME}
 
-${OBJS}:
+${OBJS}: ${SRCS}
 	${CC} ${FLAGS} -c ${SRCS}
 
 clean:

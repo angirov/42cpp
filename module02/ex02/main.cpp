@@ -14,9 +14,6 @@ int main( void ) {
 
     std::cout << "b:\t\t" << b << std::endl;
     std::cout << "max(a, b):\t\t" << Fixed::max( a, b ) << std::endl;
-    // std::cout << "c:\t\t" << c << std::endl;
-    // std::cout << "d:\t\t" << d << std::endl;
-    // std::cout << "c*d:\t\t" << c*d << std::endl;
     return 0;
 }
 
