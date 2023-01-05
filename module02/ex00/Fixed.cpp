@@ -1,15 +1,20 @@
 #include "Fixed.hpp"
 
 Fixed::Fixed(): val(0) {
-	std::cout << "Fixed object default constructor is called." << std::endl;
+	std::cout << "Default constructor called." << std::endl;
 }
 
 Fixed::Fixed(const Fixed& orig): val(orig.val) {
-	std::cout << "Fixed object copy constructor is called." << std::endl;
+	std::cout << "Copy constructor called." << std::endl;
 }
 
 Fixed& Fixed::operator=(const Fixed& orig) {
-	this->val = orig.val;
+	std::cout << "Copy assignment operator called." << std::endl;
+
+	if (&orig == this)
+		std::cout << "### Self-assigment attempt" << std::endl;
+	else
+		this->val = orig.getRawBits();
 	return *this;
 }
 
@@ -18,6 +23,7 @@ Fixed::~Fixed() {
 }
 
 int Fixed::getRawBits( void ) const{
+	std::cout << "getRawBits member function called." << std::endl;	
 	return this->val;
 }
 
