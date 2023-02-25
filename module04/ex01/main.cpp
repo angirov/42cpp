@@ -6,10 +6,12 @@
 
 int main()
 {
-	const Animal* meta = new Animal();
-	std::cout << "@@@ Type of meta: ";
-	std::cout << meta->getType() << std::endl;
+	std::cout << "===== ANIMAL =====" << std::endl;
+	const Animal* a = new Animal();
+	std::cout << "@@@ Type of a: ";
+	std::cout << a->getType() << std::endl;
 
+	std::cout << "=====   DOG   =====" << std::endl;
 	const Animal* d = new Dog();
 	std::cout << "@@@ Type of d: " << d->getType() << std::endl;
 	std::cout << "@@@ Type of d: " << d->Animal::getType() << std::endl;
@@ -17,9 +19,10 @@ int main()
 	std::cout << "### Ideas of d: " << std::endl;
 	d->printIdeas();
 
+	std::cout << "=====   CAT   =====" << std::endl;
 	Animal* c = new Cat();
 	*c = *d;
-	std::cout << "### Ideas of c: " << std::endl;
+	std::cout << "### Ideas of c (copy of d): " << std::endl;
 	c->printIdeas();
 	c->newIdea("Errare humanum est");
 	std::cout << "### New ideas of c: " << std::endl;
@@ -30,8 +33,9 @@ int main()
 
 	delete d;
 	delete c;
-	delete meta;
+	delete a;
 
+	std::cout << std::endl;
 	std::cout << "===== Array experiment starts =====" << std::endl;
 	Animal * array[ARR_LEN];
 	for (int i = 0; i < ARR_LEN; i++)

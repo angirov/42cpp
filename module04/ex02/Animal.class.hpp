@@ -18,7 +18,7 @@ public:
 	virtual ~Animal( void );
 	Animal & operator=(Animal const & rhs);
 	virtual std::string getType() const;
-	virtual void makeSound() const = 0;
+	virtual void makeSound() const = 0; // this is a pure virtual function that makes this class abstract
 
 	void newIdea(std::string idea) const;
 	std::string getIdea(int index) const;
