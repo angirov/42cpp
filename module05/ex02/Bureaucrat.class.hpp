@@ -21,7 +21,7 @@ public:
 
 	std::string getName() const;
 	int getGrade() const;
-	void setGrade(int grade) throw(std::exception);
+	void setGrade(int grade);
 	void incrementGrade();
 	void decrementGrade();
 	void signForm(AForm &);

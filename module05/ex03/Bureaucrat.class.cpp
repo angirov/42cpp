@@ -31,7 +31,7 @@ int Bureaucrat::getGrade() const {
 	return (grade);
 };
 
-void Bureaucrat::setGrade(int ingrade) throw(std::exception) {
+void Bureaucrat::setGrade(int ingrade) {
 		if (ingrade < 1)
 			throw GradeTooHighException();
 		else if (ingrade > 150)
