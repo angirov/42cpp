@@ -3,14 +3,14 @@
 
 int main()
 {
-	Bureaucrat * e = new Bureaucrat("Emmanuel", 150);
+	Bureaucrat e = Bureaucrat("Emmanuel", 150);
+	Bureaucrat j = Bureaucrat("Jacque", 1);
 
-	Form * f = new Form("D4", 10, 20);
-	std::cout << *f << " exits now!" << std::endl;
-	e->signForm(*f);
+	Form f = Form("D4", 10, 20);
+	std::cout << f << " exists now!" << std::endl;
+	e.signForm(f);
+	j.signForm(f);
 
-	delete e;
-	delete f;
 	return 0;
 }
 

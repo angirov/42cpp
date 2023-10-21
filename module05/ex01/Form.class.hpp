@@ -23,6 +23,7 @@ public:
 	Form(std::string name, int gradeSign, int gradeExec);
 	Form(Form const &);
 	~Form();
+
 	Form & operator=(Form const &);
 
 	std::string getName() const;
