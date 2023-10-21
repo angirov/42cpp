@@ -8,42 +8,40 @@
 
 int main()
 {
-	Bureaucrat * e = new Bureaucrat("Emmanuel", 15);
-	Bureaucrat * v = new Bureaucrat("Vladimir", 1);
+	Bureaucrat e = Bureaucrat("Emmanuel", 140);
+	Bureaucrat n = Bureaucrat("Nicolas", 70);
+	Bureaucrat j = Bureaucrat("Jacque", 3);
 
-	AForm * f = new PresidentialPardonForm("D4");
-	std::cout << *f << " exits now!" << std::endl;
-	e->signForm(*f);
-	e->executeForm(*f);
-	v->executeForm(*f);
+	std::cout << "======== TESTING PresidentialPardonForm ========" << std::endl;
+	AForm * f = new ShrubberyCreationForm("D4");
+	std::cout << *f << " exists now!" << std::endl;
+	e.signForm(*f);
+	e.signForm(*f);
+	e.executeForm(*f);
+	n.executeForm(*f);
+	delete f;
 
-	AForm * r =  new RobotomyRequestForm("R2");
-	e->signForm(*r);
+	std::cout << "======== TESTING RobotomyRequestForm ========" << std::endl;
 	for (int i = 0; i < 10; i++)
 	{
-		e->executeForm(*r);
+		AForm * r =  new RobotomyRequestForm("R2");
+		n.signForm(*r);
+		j.executeForm(*r);
+		delete r;
+		std::cout << i << " ================" << std::endl;
 	}
 
-	AForm * s =  new ShrubberyCreationForm("S12");
-	e->signForm(*s);
-	e->executeForm(*s);
+	std::cout << "======== TESTING PresidentialPardonForm ========" << std::endl;
+	AForm * pr =  new PresidentialPardonForm("S12");
+	e.signForm(*pr);
+	j.signForm(*pr);
+	j.executeForm(*pr);
+	delete pr;
 
-	delete e;
-	delete f;
-	delete r;
-	delete s;
+	std::cout << "======== FINISHED TESTING ========" << std::endl;
+
 	return 0;
 }
-
-// int main()
-// {
-// 	for (int i=0; i < 10; i++)
-// 	{
-// 		std::cout << rand() % 2 << std::endl;
-// 	}
-// 	return 0;
-// }
-
 
 // https://www.youtube.com/watch?v=0ojB8c0xUd8
 

@@ -21,7 +21,7 @@ public:
 
 	std::string getName() const;
 	int getGrade() const;
-	void setGrade(int grade) throw(std::exception);
+	void setGrade(int grade);
 	void incrementGrade();
 	void decrementGrade();
 	void signForm(AForm &);
@@ -30,14 +30,14 @@ public:
 	class GradeTooHighException : public std::exception {
 	public:
 		virtual const char* what() const throw() {
-			return ("### Grade too high. Must be between 1 and 150");
+			return ("Exception: Grade too high. Must be between 1 and 150");
 		}
 	};
 
 	class GradeTooLowException : public std::exception {
 	public:
 		virtual const char* what() const throw() {
-			return ("### Grade too low. Must be between 1 and 150");
+			return ("Exception: Grade too low. Must be between 1 and 150");
 		}
 	};
 };

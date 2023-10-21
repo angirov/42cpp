@@ -3,7 +3,9 @@
 AForm::AForm(std::string inname, int ingradeSign, int ingradeExec) : 
 	name(inname),
 	gradeSign(isGrade(ingradeSign)),
-	gradeExec(isGrade(ingradeExec)) {
+	gradeExec(isGrade(ingradeExec)),
+	issigned(false),
+	isexecuted(false) {
 	std::cout << "Form constructor is called." << std::endl;
 };
 
@@ -55,8 +57,18 @@ int AForm::isGrade(int ingrade) const {
 	return ingrade;
 }
 
-bool AForm::goodGrade(Bureaucrat const & b) const {
+bool AForm::goodGradeSign(Bureaucrat const & b) const {
 	if (b.getGrade() <= gradeSign)
+		return true;
+	else
+	{
+		throw AForm::GradeTooLowException();
+		return false;
+	}
+}
+
+bool AForm::goodGradeExec(Bureaucrat const & b) const {
+	if (b.getGrade() <= gradeExec)
 		return true;
 	else
 	{
@@ -76,21 +88,30 @@ bool AForm::goodSinged(AForm const &) const {
 }
 
 bool AForm::beSigned(Bureaucrat const & b) {
-	if (goodGrade(b))
+	if (issigned) {
+		std::cerr << "### Form is already signed!" << std::endl;
+		return false;
+	}
+	else if (goodGradeSign(b))
 		return (issigned = true);
 	else
 		return false;
 }
 
-bool AForm::execute(Bureaucrat const & b) const {
+bool AForm::execute(Bureaucrat const & b) {
+	if (isexecuted) {
+		std::cerr << "### Form is already executed!" << std::endl;
+		return false;
+	}
 	try {
-		if (goodGrade(b) && goodSinged(*this))
-			return execAction();
-
+		if (goodGradeExec(b) && goodSinged(*this))
+			if (execAction()) {
+				return (isexecuted = true);
+			}
 	} catch(GradeTooLowException &e) {
-		std::cout << "### " << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 	} catch(NotSignedException &e) {
-		std::cout << "### " << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 	return false;
 }

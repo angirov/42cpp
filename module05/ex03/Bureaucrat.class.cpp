@@ -68,19 +68,21 @@ void Bureaucrat::signForm(AForm & f) {
 	}
 	catch (std::exception & e)
 	{
-		std::cout << *this << " couldn’t sign " << f 
+		std::cerr << *this << " couldn’t sign " << f 
 		<< " because " << e.what() << std::endl;
 	}
 }
 
 void Bureaucrat::executeForm(AForm & f) {
+	std::cout << ">>> " << *this 
+	<< " tries to execute " << f << std::endl;
 	try {
 		if (f.execute(*this))
 			std::cout << *this << " executed " << f << std::endl;
 	}
 	catch (std::exception & e)
 	{
-		std::cout << *this << " couldn’t sign " << f 
+		std::cerr << *this << " couldn’t sign " << f 
 		<< " because " << e.what() << std::endl;
 	}
 }

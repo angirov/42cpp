@@ -9,37 +9,43 @@
 
 int main()
 {
-	Bureaucrat * e = new Bureaucrat("Emmanuel", 15);
-	Bureaucrat * v = new Bureaucrat("Vladimir", 1);
-
 	Intern * i = new Intern();
 
-	AForm * f = i->makeForm("presidential pardon", "D4");
-	std::cout << *f << " exits now!" << std::endl;
-	e->signForm(*f);
-	e->executeForm(*f);
-	v->executeForm(*f);
+	Bureaucrat e = Bureaucrat("Emmanuel", 140);
+	Bureaucrat n = Bureaucrat("Nicolas", 70);
+	Bureaucrat j = Bureaucrat("Jacque", 3);
 
-	AForm * r = i->makeForm("robotomy request", "R2");
-	e->signForm(*r);
-	for (int i = 0; i < 10; i++)
+	std::cout << "======== TESTING PresidentialPardonForm ========" << std::endl;
+	AForm * f = i->makeForm("shrubbery creation", "S12");
+	std::cout << *f << " exists now!" << std::endl;
+	e.signForm(*f);
+	e.signForm(*f);
+	e.executeForm(*f);
+	n.executeForm(*f);
+	delete f;
+
+	std::cout << "======== TESTING RobotomyRequestForm ========" << std::endl;
+	for (int idx = 0; idx < 10; idx++)
 	{
-		e->executeForm(*r);
+		AForm * r = i->makeForm("robotomy request", "R2");
+		n.signForm(*r);
+		j.executeForm(*r);
+		delete r;
+		std::cout << idx << " ================" << std::endl;
 	}
 
-	AForm * s = i->makeForm("shrubbery creation", "S12");
-	e->signForm(*s);
-	e->executeForm(*s);
+	std::cout << "======== TESTING PresidentialPardonForm ========" << std::endl;
+	AForm * pr = i->makeForm("presidential pardon", "D4");
+	e.signForm(*pr);
+	j.signForm(*pr);
+	j.executeForm(*pr);
+	delete pr;
 
-	// AForm * w = i->makeForm("shruBBBBery creation", "S12");
-	// e->signForm(*w);
+	std::cout << "======== FINISHED TESTING ========" << std::endl;
 
-	delete e;
-	delete f;
-	delete r;
-	delete s;
 	return 0;
 }
+
 
 // int main()
 // {

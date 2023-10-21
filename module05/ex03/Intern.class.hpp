@@ -26,7 +26,7 @@ public:
 	class InvalidFormException : std::exception {
 	public:
 		const char * what() const throw() {
-			return "invalid form name input";
+			return "Exception: invalid form name input";
 		}
 	};
 	AForm * makeForm(std::string formName, std::string target) const;

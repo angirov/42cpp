@@ -88,9 +88,9 @@ bool AForm::execute(Bureaucrat const & b) const {
 			return execAction();
 
 	} catch(GradeTooLowException &e) {
-		std::cout << "### " << e.what() << std::endl;
+		std::cout << e.what() << std::endl;
 	} catch(NotSignedException &e) {
-		std::cout << "### " << e.what() << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 	return false;
 }
