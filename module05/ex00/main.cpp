@@ -2,14 +2,19 @@
 
 int main()
 {
-	Bureaucrat * e = new Bureaucrat("Emmanuel", 150);
+	Bureaucrat e = Bureaucrat("Emmanuel", 150);
+	Bureaucrat j = Bureaucrat("Jacque", 1);
+	Bureaucrat n = Bureaucrat("Nicolas", 200);
 
-	std::cout << *e <<  std::endl; 
+	std::cout << "$$$ Print out: ";
+	std::cout << e <<  std::endl;
 
-	e->decrementGrade();
-	e->incrementGrade();
+	e.decrementGrade();
+	e.incrementGrade();
 
-	delete e;
+	j.incrementGrade();
+	j.decrementGrade();
+
 	return 0;
 }
 
