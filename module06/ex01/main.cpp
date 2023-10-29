@@ -1,6 +1,18 @@
 #include <stdint.h>
 #include <iostream>
 #include <unistd.h>
+#include "Serializer.class.hpp"
+
+struct Data {
+	int x;
+	int y;
+	Data() : x(0), y(0) {};
+	void print() { 
+		std::cout << "Printing Data struct:\n" <<
+		"x: " << x << std::endl <<
+		"y: " << y << std::endl;
+	}
+};
 
 void printByte(void * ptr)
 {
@@ -27,37 +39,30 @@ void printMem(void * ptr, int size)
 	write(1, "\n", 1);
 }
 
-class Data {
-public:
-	int i = 0;
-};
-
-uintptr_t serialize(Data* ptr)
-{
-	return reinterpret_cast<uintptr_t>(ptr);
-}
-
-Data* deserialize(uintptr_t raw)
-{
-	return reinterpret_cast<Data *>(raw);
-}
-
 int main()
 {
 	uintptr_t i;
 
 	std::cout << "Sizeof( Data ): " << sizeof(Data) << std::endl;
-	Data *p = new Data();
-	std::cout << "Address kept in p: " << p  << std::endl;
+	Data *p= new Data();
+	std::cout << "Address kept in p: " << p << std::endl;
 	printMem(p, sizeof(Data));
-	p->i = 42;
+	p->x = 42;
+	p->y = 42;
 	printMem(p, sizeof(Data));
+	p->print();
 
-	i = serialize(p);
+	std::cout << ">>>>> Serializer  is  called: i <- p" << std::endl;
+	i = Serializer::serialize(p);
 	std::cout << "Value of i in hex:   " << std::hex << i  << std::endl;
 
-	Data *q = deserialize(i);
-	std::cout << "Address kept in q: " << q  << std::endl;
+	std::cout << ">>>>> Deserializer is called: q <- i" << std::endl;
+	Data *q = Serializer::deserialize(i);
+	std::cout << std::dec << "Address kept in q: " << q  << std::endl;
 	printMem(q, sizeof(Data));
+	q->print();
+
 	delete q;
 }
+
+// intptr_t, uintptr_t - integer types wide enough to hold pointers
