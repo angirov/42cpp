@@ -6,8 +6,10 @@
 
 class Base {
 public:
-	virtual void doNothing() {};
+	virtual ~Base() {
+	std::cout << ">>> Base destructor is called" << std::endl;
 	};
+};
 
 class A : public Base {};
 class B : public Base {};
@@ -47,12 +49,15 @@ Base * generate(void)
 	{
 	case 0:
 		p = new A();
+		std::cout << ">>> Generated Class:\t\tA" << std::endl;
 		break;
 	case 1:
 		p = new B();
+		std::cout << ">>> Generated Class:\t\tB" << std::endl;
 		break;
 	case 2:
 		p = new C();
+		std::cout << ">>> Generated Class:\t\tC" << std::endl;
 		break;
 	}
 	return p;
@@ -60,7 +65,7 @@ Base * generate(void)
 
 void identify(Base* p)
 {
-	std::string message = ">>> Actual type pointed to:  ";
+	std::string message = ">>> Actual type pointed to:\t";
 	if (dynamic_cast<A *>(p))
 		message += "A";
 	else if (dynamic_cast<B *>(p))
@@ -77,23 +82,20 @@ void identify(Base& p)
 	enum types {t_A, t_B, t_C};
 	std::string names[] = {"A", "B", "C"};
 	int flags = 0;
-	std::string message = ">>> Actual type reffered to: ";
+	std::string message = ">>> Actual type reffered to:\t";
 
 	try {dynamic_cast<A &>(p);}
-	catch(std::bad_cast& bc) {
+	catch(std::exception& e) {
 		flags |= 1 << t_A;
 	}
-	// printMem(&flags, sizeof(int));
 	try {dynamic_cast<B &>(p);}
-	catch(std::bad_cast& bc) {
+	catch(std::exception& e) {
 		flags |= 1 << t_B;
 	}
-	// printMem(&flags, sizeof(int));
 	try {dynamic_cast<C &>(p);}
-	catch(std::bad_cast& bc) {
+	catch(std::exception& e) {
 		flags |= 1 << t_C;
 	}
-	// printMem(&flags, sizeof(int));
 	
 	for (int i = 0; i < 3; i++) {
 		if (!(flags & 1 << i))
