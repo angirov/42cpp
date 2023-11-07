@@ -43,7 +43,7 @@ Array<T>::Array(unsigned int n) : array(new T[n]), length(n)
 }
 
 template <typename T>
-Array<T>::Array(Array const &other)
+Array<T>::Array(Array const &other) : array(NULL), length(0)
 {
     std::cout << "Copy Array constructor is called" << std::endl;
     *this = other;
@@ -65,6 +65,7 @@ unsigned int Array<T>::size() const
 template<typename T>
 Array<T> &Array<T>::operator=(Array const &other)
 {
+    std::cout << "Assignment operator is called" << std::endl;
     if (this == &other)
         return *this;
     delete [] array;
