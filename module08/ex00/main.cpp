@@ -22,5 +22,14 @@ int main () {
     lst.push_back(40);
     lst.push_back(50);
 
-    std::cout << easyfind(lst, 10) << std::endl;
+    int tofind = 10;
+    int idx = easyfind(lst, tofind);
+
+    if (idx >= 0) {
+        std::cout << "The number " << tofind
+        << " is found at index " << idx << std::endl;
+    } else {
+        std::cout << "The number " << tofind
+        << " is not found" << std::endl;
+    }
 }
