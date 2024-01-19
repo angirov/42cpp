@@ -64,7 +64,7 @@ public: //////////////////////////////////////////////////
         }
         if (stack.size() == 1) {
             int result = stack.top();
-            std::cout << "rpn: result: " << result << std::endl;
+            std::cout << result << std::endl;
             exit(0);
         }
         else {
