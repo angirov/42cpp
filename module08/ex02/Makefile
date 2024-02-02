@@ -14,7 +14,7 @@ all: ${NAME}
 ${NAME}: ${OBJS}
 	${CC} ${OBJS} -o ${NAME}
 
-${OBJS}: ${SRCS}
+${OBJS}: ${SRCS} ${HDRS}
 	${CC} ${FLAGS} -c ${SRCS}
 
 clean:

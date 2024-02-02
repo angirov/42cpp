@@ -1,7 +1,7 @@
 NAME := tester
 
 SRCS	:=	main.cpp Span.class.cpp
-HDRS	:=	Array.class.hpp
+HDRS	:=	Span.class.hpp
 
 OBJS	:= ${SRCS:.cpp=.o}
 
@@ -14,7 +14,7 @@ all: ${NAME}
 ${NAME}: ${OBJS}
 	${CC} ${OBJS} -o ${NAME}
 
-${OBJS}: ${SRCS}
+${OBJS}: ${SRCS} ${HDRS}
 	${CC} ${FLAGS} -c ${SRCS}
 
 clean:
