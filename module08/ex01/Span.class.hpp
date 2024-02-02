@@ -4,15 +4,16 @@
 # include <cmath>
 # include <set>
 # include <algorithm>
+# include <vector>
 
 class Span {
 private:
     Span();
 
-    size_t max;
+    unsigned int max;
     std::multiset<int> numbers;
 public:
-    Span(size_t max);
+    Span(unsigned int max);
     Span(Span const &other);
     virtual ~Span();
 
@@ -29,8 +30,8 @@ public:
     template<typename InputIterator>
     void addNumber(InputIterator begin, InputIterator end);
 
-    size_t shortestSpan(void) const;
-    size_t longestSpan(void) const;
+    unsigned int shortestSpan(void) const;
+    unsigned int longestSpan(void) const;
 };
 
 template<typename InputIterator>

@@ -1,6 +1,6 @@
 # include "Span.class.hpp"
 
-Span::Span(size_t max): max(max) {}
+Span::Span(unsigned int max): max(max) {}
 
 Span::Span(Span const &other): max(other.max) {
     this->numbers.clear();
@@ -36,15 +36,15 @@ void Span::addNumber(int number) {
     this->numbers.insert(number);
 }
 
-size_t Span::shortestSpan(void) const {
+unsigned int Span::shortestSpan(void) const {
     if (this->numbers.size() <= 1)
         throw NotEnoughNumbersException();
 
     std::multiset<int>::iterator first = this->numbers.begin();
     std::multiset<int>::iterator second = ++this->numbers.begin();
-    size_t minDiff = std::abs(*second++ - *first++);
+    unsigned int minDiff = std::abs(*second++ - *first++);
     while (second != this->numbers.end()) {
-        size_t diff = std::abs(*second - *first);
+        unsigned int diff = std::abs(*second - *first);
         if (diff < minDiff)
             minDiff = diff;
         first++;
@@ -53,7 +53,7 @@ size_t Span::shortestSpan(void) const {
     return minDiff;
 }
 
-size_t Span::longestSpan(void) const {
+unsigned int Span::longestSpan(void) const {
     if (this->numbers.size() <= 1)
         throw NotEnoughNumbersException();
 
