@@ -1,7 +1,7 @@
 NAME := btc
 
 SRCS	:=	main.cpp
-
+HDRS	:=	btc.class.hpp
 OBJS	:= ${SRCS:.cpp=.o}
 
 CC 		:=	c++
