@@ -3,11 +3,6 @@
 
 #define K 3
 
-std::vector<int>::iterator id2it(std::vector<int> V, int id) {
-    std::vector<int>::iterator nth = V.begin() + id;
-    return nth;
-}
-
 void insertionSort(std::vector<int>& A, int start, int finish) {
     for (int i = start; i < finish; i++) {
         int tempVal = A[i + 1];
@@ -62,8 +57,17 @@ void sort(std::vector<int>& A, int Sstart, int Sfinish) {
 
 int main() {
     std::vector<int> A = { 2, 5, 1, 6, 7, 3, 8, 4, 9 };
-    sort(A, 0, A.size() - 1);
+    std::cout << "Before: ";
     for (int i=0; i < A.size(); ++i) {
-        std::cout << A[i] << std::endl;
+        std::cout << A[i] << ", ";
     }
+    std::cout << std::endl;
+
+    sort(A, 0, A.size() - 1);
+
+    std::cout << "After: ";
+    for (int i=0; i < A.size(); ++i) {
+        std::cout << A[i] << ", ";
+    }
+    std::cout << std::endl;
 }
