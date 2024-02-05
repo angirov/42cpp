@@ -1,5 +1,4 @@
-#define DebugList true
-#define DebugVec true
+#define DEBUG true
 #include <iostream>
 #include <list>
 #include <limits>
@@ -51,9 +50,9 @@ void insertionSort_deque(std::deque<int>& vec, int start, int finish) {
 
     // for debugging only
     for (int i=start; i <= finish; ++i) {
-        if (DebugVec) std::cout << ">> [" << i << "] " << vec[i] << std::endl;
+        if (DEBUG) std::cout << ">> [" << i << "] " << vec[i] << std::endl;
     }
-    if (DebugVec) std::cout << "---------" << std::endl;
+    if (DEBUG) std::cout << "---------" << std::endl;
 }
 
 void merge_deque(std::deque<int>& vec, int s, int m, int e) {
@@ -81,7 +80,7 @@ void merge_deque(std::deque<int>& vec, int s, int m, int e) {
 
 void sort_deque(std::deque<int>& vec, int start, int finish) {
     int middle = (start + finish) / 2;
-    if (DebugVec) std::cout << "Vstart:" << start << " Vfinish:" << finish << std::endl;
+    if (DEBUG) std::cout << "Vstart:" << start << " Vfinish:" << finish << std::endl;
     if (finish - start >= K) {
         sort_deque(vec, start, middle);
         sort_deque(vec, middle + 1, finish);
@@ -104,9 +103,9 @@ void insertionSort(std::vector<int>& vec, int start, int finish) {
 
     // for debugging only
     for (int i=start; i <= finish; ++i) {
-        if (DebugVec) std::cout << ">> [" << i << "] " << vec[i] << std::endl;
+        if (DEBUG) std::cout << ">> [" << i << "] " << vec[i] << std::endl;
     }
-    if (DebugVec) std::cout << "---------" << std::endl;
+    if (DEBUG) std::cout << "---------" << std::endl;
 }
 
 void merge(std::vector<int>& vec, int s, int m, int e) {
@@ -134,7 +133,7 @@ void merge(std::vector<int>& vec, int s, int m, int e) {
 
 void sort(std::vector<int>& vec, int start, int finish) {
     int middle = (start + finish) / 2;
-    if (DebugVec) std::cout << "Vstart:" << start << " Vfinish:" << finish << std::endl;
+    if (DEBUG) std::cout << "Vstart:" << start << " Vfinish:" << finish << std::endl;
     if (finish - start >= K) {
         sort(vec, start, middle);
         sort(vec, middle + 1, finish);
@@ -143,101 +142,6 @@ void sort(std::vector<int>& vec, int start, int finish) {
         insertionSort(vec, start, finish);
     }
 }
-// ////////////////////////////////////////////////////////////////////
-// void insertionSort_list(std::list<int>& A, int start, int finish) {
-//     std::list<int>::iterator itStart = A.begin();
-//     std::advance(itStart, start);
-//     std::list<int>::iterator itFinish = A.begin();
-//     std::advance(itFinish, finish + 1);
-
-//     for (std::list<int>::iterator it = itStart; it != itFinish; ++it) {
-//         int tempVal = *it;
-//         std::list<int>::iterator j = it;
-//         while (j != itStart && *(j - 1) > tempVal) {
-//             *j = *(j);
-//             j--;
-//         }
-//         *j = tempVal;
-//     }
-
-//     for (std::list<int>::iterator it = itStart; it != itFinish; ++it) {
-//         if (DebugList) std::cout << ">> [" << std::distance(A.begin(), it) << "] " << *it << std::endl;
-//     }
-//     if (DebugList) std::cout << "---------" << std::endl;
-// }
-
-// void merge_list(std::list<int>& A, int s, int m, int e) {
-//     std::list<int> LA;
-//     std::list<int> RA;
-
-//     std::list<int>::iterator itA = A.begin();
-//     std::advance(itA, s);
-
-//     std::list<int>::iterator itLA = LA.begin();
-//     std::list<int>::iterator itRA = RA.begin();
-
-//     for (int i = 0; i < m - s + 1; ++i) {
-//         LA.push_back(*itA);
-//         ++itA;
-//     }
-
-//     for (int i = 0; i < e - m; ++i) {
-//         RA.push_back(*itA);
-//         ++itA;
-//     }
-
-//     itA = A.begin();
-//     std::advance(itA, s);
-
-//     itLA = LA.begin();
-//     itRA = RA.begin();
-
-//     for (int i = 0; i < e - s + 1; ++i) {
-//         if (itRA == RA.end()) {
-//             *itA = *itLA;
-//             ++itLA;
-//         } else if (itLA == LA.end()) {
-//             *itA = *itRA;
-//             ++itRA;
-//         } else if (*itRA > *itLA) {
-//             *itA = *itLA;
-//             ++itLA;
-//         } else {
-//             *itA = *itRA;
-//             ++itRA;
-//         }
-//         ++itA;
-//     }
-// }
-//     sort_list(lst, 0, lst.size() - 1);
-// void sort_list(std::list<int>& A, int start, int finish) {
-//     int middle = (start + finish) / 2;
-//     if (DebugList) std::cout << "Lstart:" << start << " Lfinish:" << finish << std::endl;
-//     if (finish - start > K) {
-//         sort_list(A, start, middle);
-//         sort_list(A, middle + 1, finish);
-//         merge_list(A, start, middle, finish);
-//     } else {
-//         insertionSort_list(A, start, finish);
-//     }
-// }
-
-// int main() {
-//     std::list<int> A = {2, 5, 1, 6, 7, 3, 8, 4, 9};
-//     std::cout << "Before: ";
-//     for (const auto& element : A) {
-//         std::cout << element << ", ";
-//     }
-//     std::cout << std::endl;
-
-//     sort_list(A, 0, A.size() - 1);
-
-//     std::cout << "After: ";
-//     for (const auto& element : A) {
-//         std::cout << element << ", ";
-//     }
-//     std::cout << std::endl;
-// }
 
 std::list<int> process_input(int argc, char **argv) {
     std::list<int> collector;
@@ -265,9 +169,9 @@ int main(int argc, char** argv) {
         exit_msg("ERROR: wrong number of arguments.", 10);
     std::list<int> lst = process_input(argc, argv);
     for (std::list<int>::iterator it = lst.begin(); it != lst.end(); ++it) {
-        if (DebugList || DebugVec) std::cout << *it << " ";
+        if (DEBUG) std::cout << *it << " ";
     }
-    if (DebugList || DebugVec) std::cout << std::endl;
+    if (DEBUG) std::cout << std::endl;
 
     std::cout << "Before: ";
     for (std::list<int>::iterator it = lst.begin(); it != lst.end(); ++it) {
@@ -275,60 +179,43 @@ int main(int argc, char** argv) {
     }
     std::cout << std::endl;
 
-
-
-
-
     std::vector<int> vec(lst.begin(), lst.end());
     std::clock_t start_vec = std::clock();
     sort(vec, 0, vec.size() - 1);
     std::clock_t stop_vec = std::clock();
 
     // verify vec sort
-    if (DebugVec) std::cout << "Verifying the vector sort: ";
+    if (DEBUG) std::cout << "Verifying the vector sort: ";
     int prev_vec = -1;
     for (int i=0; (unsigned)i < vec.size(); ++i) {
         if (vec[i] < prev_vec)
             exit_msg("Vector Sorting failed: ", 42);
-        if (DebugVec) std::cout << vec[i] << " ";
+        if (DEBUG) std::cout << vec[i] << " ";
         prev_vec = vec[i];
     }
-    if (DebugVec) std::cout << std::endl;
+    if (DEBUG) std::cout << std::endl;
 
 
 
 
 
     std::deque<int> deq(lst.begin(), lst.end());
+
     std::clock_t start_deq = std::clock();
     sort_deque(deq, 0, deq.size() - 1);
     std::clock_t stop_deq = std::clock();
+
     // verify deq sort
-    if (DebugVec) std::cout << "Verifying the deque sort: ";
+    if (DEBUG) std::cout << "Verifying the deque sort: ";
     int prev_deq = -1;
     for (int i=0; (unsigned)i < deq.size(); ++i) {
         if (deq[i] < prev_deq)
             exit_msg("Vector Sorting failed: ", 42);
-        if (DebugVec) std::cout << deq[i] << " ";
+        if (DEBUG) std::cout << deq[i] << " ";
         prev_deq = deq[i];
     }
-    if (DebugVec) std::cout << std::endl;
+    if (DEBUG) std::cout << std::endl;
 
-    // std::clock_t start_list = std::clock();
-    // sort_list(lst, 0, lst.size() - 1);
-    // std::clock_t stop_list = std::clock();
-    // if (DebugList) std::cout << "============================================== " << std::endl;
-    // std::cout << "After: ";
-    // int prev = -1;
-    // for (std::list<int>::iterator it = lst.begin(); it != lst.end(); ++it) {
-    //     std::cout << *it << ", ";
-    //     if (*it < prev)
-    //         exit_msg("Sorting failed: ", 42);
-    //     prev = *it;
-    // }
-    // std::cout << std::endl;
-
-    std::cout << "Time to process a range of" << vec.size() << "elements with std::vector: " << ((stop_vec - start_vec) * 100000 / CLOCKS_PER_SEC) << "us" << std::endl;
-    // std::cout << "Time to process a range of" << lst.size() << "elements with std::list: " << ((stop_list - start_list) * 100000 / CLOCKS_PER_SEC) << "us" << std::endl;
-    std::cout << "Time to process a range of" << deq.size() << "elements with std::deque: " << ((stop_deq - start_deq) * 100000 / CLOCKS_PER_SEC) << "us" << std::endl;
+    std::cout << "Time to process a range of " << vec.size() << " elements with std::vector: " << ((stop_vec - start_vec) * 100000 / CLOCKS_PER_SEC) << "us" << std::endl;
+    std::cout << "Time to process a range of " << deq.size() << " elements with std::deque: " << ((stop_deq - start_deq) * 100000 / CLOCKS_PER_SEC) << "us" << std::endl;
 }
