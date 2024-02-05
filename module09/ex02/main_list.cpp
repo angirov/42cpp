@@ -35,37 +35,59 @@ bool is_int_literal(std::string str)
     return (true);
 }
 
-void insertionSort(std::list<int>& A, int start, int finish) {
-    std::list<int>::iterator itStart = std::next(A.begin(), start);
-    std::list<int>::iterator itFinish = std::next(itStart, finish - start + 1);
+#include <iostream>
+#include <list>
+#include <iterator>
 
-    for (std::list<int>::iterator it = std::next(itStart); it != itFinish; ++it) {
+// ...
+
+void insertionSort(std::list<int>& A, int start, int finish) {
+    std::list<int>::iterator itStart = A.begin();
+    std::advance(itStart, start);
+    std::list<int>::iterator itFinish = A.begin();
+    std::advance(itFinish, finish + 1);
+
+    for (std::list<int>::iterator it = itStart; it != itFinish; ++it) {
         int tempVal = *it;
         std::list<int>::iterator j = it;
-        while (j != itStart && *(std::prev(j)) > tempVal) {
-            *j = *(std::prev(j));
+        while (j != itStart && *(--j) > tempVal) {
+            *j = *(j);
             --j;
         }
         *j = tempVal;
     }
 
-    for (std::list<int>::iterator it = itStart; it != std::next(itFinish); ++it) {
+    for (std::list<int>::iterator it = itStart; it != itFinish; ++it) {
         std::cout << ">> [" << std::distance(A.begin(), it) << "] " << *it << std::endl;
     }
     std::cout << "---------" << std::endl;
 }
 
 void merge(std::list<int>& A, int s, int m, int e) {
-    // int n1 = m - s + 1;
-    // int n2 = e - m;
+    std::list<int> LA;
+    std::list<int> RA;
 
-    std::list<int> LA(std::next(A.begin(), s), std::next(A.begin(), m + 1));
-    std::list<int> RA(std::next(A.begin(), m + 1), std::next(A.begin(), e + 1));
-
-    std::list<int>::iterator itA = std::next(A.begin(), s);
+    std::list<int>::iterator itA = A.begin();
+    std::advance(itA, s);
 
     std::list<int>::iterator itLA = LA.begin();
     std::list<int>::iterator itRA = RA.begin();
+
+    for (int i = 0; i < m - s + 1; ++i) {
+        LA.push_back(*itA);
+        ++itA;
+    }
+
+    for (int i = 0; i < e - m; ++i) {
+        RA.push_back(*itA);
+        ++itA;
+    }
+
+    itA = A.begin();
+    std::advance(itA, s);
+
+    itLA = LA.begin();
+    itRA = RA.begin();
 
     for (int i = 0; i < e - s + 1; ++i) {
         if (itRA == RA.end()) {
