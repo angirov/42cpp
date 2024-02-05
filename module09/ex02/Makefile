@@ -1,7 +1,7 @@
 NAME := PmergeMe
 
-SRCS	:=	main.cpp
-# HDRS	:=	rpn.hpp
+SRCS	:=	main.cpp PmergeMe.cpp
+HDRS	:=	PmergeMe.hpp
 
 OBJS	:= ${SRCS:.cpp=.o}
 
@@ -25,8 +25,9 @@ fclean: clean
 
 re: fclean all
 
+# jot [reps [begin [end [sep]]]]
 mac-test:
-	./${NAME} `jot -r 3000 1 1000 | tr '\n' ' '`
+	./${NAME} `jot -r 3000 1 3000 ' '`
 linux-test:
 	./${NAME} `shuf -i 1-1000 -n 1000 | tr "\n" " "`
 .PHONY: all clean fclean re
