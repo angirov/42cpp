@@ -1,5 +1,5 @@
 #define TF "%Y-%m-%d"
-#define DEBUG true
+#define DEBUG false
 #define DBPATH "data.csv"
 
 #include <fstream>
@@ -8,7 +8,6 @@
 #include <iostream>
 #include <ctime>
 #include <map>
-#include <list>
 #include <limits>
 
 #include <cstdlib>
