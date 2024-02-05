@@ -3,6 +3,7 @@
 #include <list>
 #include <limits>
 #include <ctime>
+#include <stdlib.h>
 
 #define K 2
 void exit_msg(std::string msg, int n) {
