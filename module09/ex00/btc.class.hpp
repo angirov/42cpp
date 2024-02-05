@@ -188,15 +188,16 @@ private:
         return (true);
     }
 
-    // https://stackoverflow.com/questions/216823/how-to-trim-a-stdstring
-    inline std::string &__trim(std::string &s)
-    {
-        s.erase(s.begin(), std::find_if(s.begin(), s.end(),
-                                        std::not1(std::ptr_fun<int, int>(std::isspace))));
-        s.erase(std::find_if(s.rbegin(), s.rend(),
-                             std::not1(std::ptr_fun<int, int>(std::isspace)))
-                    .base(),
-                s.end());
-        return s;
+    std::string __trim(std::string &input) {
+        int s = 0;
+        int len = 0;
+        while (std::isspace(input[s])) {
+            s++;
+        }
+        while (!std::isspace(input[s+len]) && (unsigned)len < (input.size() - s)) {
+            len++;
+        }
+        return input.substr(s, len);
     }
+
 };
