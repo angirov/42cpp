@@ -1,6 +1,6 @@
 NAME := PmergeMe
 
-SRCS	:=	main_list.cpp
+SRCS	:=	main.cpp
 # HDRS	:=	rpn.hpp
 
 OBJS	:= ${SRCS:.cpp=.o}
