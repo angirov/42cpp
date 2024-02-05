@@ -24,25 +24,4 @@ fclean: clean
 
 re: fclean all
 
-test:
-	./${NAME} "5 7 +"
-	./${NAME} "5 7 -"
-	./${NAME} "5 7 *"
-	./${NAME} "55 5 /"
-	./${NAME} "5"
-	./${NAME} "5 5 5 + +"
-	./${NAME} "5 5 + 5 +"
-
-	-./${NAME} "5 5 5 + + +"
-	-./${NAME} "5 7"
-	-./${NAME} ""
-	-./${NAME} "4 5 foo bar"
-	-./${NAME}
-	-./${NAME} "+ 55 77"
-	-./${NAME} "55 + 77"
-	-./${NAME} "9 9 9 9 /"
-	-./${NAME} "-77 -7 / +"
-	-./${NAME} "-13 0 /"
-	-./${NAME} "-13 999999999999 /"
-
 .PHONY: all clean fclean re
