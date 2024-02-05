@@ -35,12 +35,12 @@ bool is_int_literal(std::string str)
 }
 
 void insertionSort(std::list<int>& A, int start, int finish) {
-    auto itStart = std::next(A.begin(), start);
-    auto itFinish = std::next(itStart, finish - start + 1);
+    std::list<int>::iterator itStart = std::next(A.begin(), start);
+    std::list<int>::iterator itFinish = std::next(itStart, finish - start + 1);
 
-    for (auto it = std::next(itStart); it != itFinish; ++it) {
+    for (std::list<int>::iterator it = std::next(itStart); it != itFinish; ++it) {
         int tempVal = *it;
-        auto j = it;
+        std::list<int>::iterator j = it;
         while (j != itStart && *(std::prev(j)) > tempVal) {
             *j = *(std::prev(j));
             --j;
@@ -48,7 +48,7 @@ void insertionSort(std::list<int>& A, int start, int finish) {
         *j = tempVal;
     }
 
-    for (auto it = itStart; it != std::next(itFinish); ++it) {
+    for (std::list<int>::iterator it = itStart; it != std::next(itFinish); ++it) {
         std::cout << ">> [" << std::distance(A.begin(), it) << "] " << *it << std::endl;
     }
     std::cout << "---------" << std::endl;
@@ -61,10 +61,10 @@ void merge(std::list<int>& A, int s, int m, int e) {
     std::list<int> LA(std::next(A.begin(), s), std::next(A.begin(), m + 1));
     std::list<int> RA(std::next(A.begin(), m + 1), std::next(A.begin(), e + 1));
 
-    auto itA = std::next(A.begin(), s);
+    std::list<int>::iterator itA = std::next(A.begin(), s);
 
-    auto itLA = LA.begin();
-    auto itRA = RA.begin();
+    std::list<int>::iterator itLA = LA.begin();
+    std::list<int>::iterator itRA = RA.begin();
 
     for (int i = 0; i < e - s + 1; ++i) {
         if (itRA == RA.end()) {
